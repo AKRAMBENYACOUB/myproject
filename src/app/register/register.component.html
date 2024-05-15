@@ -1,0 +1,30 @@
+<form #invitationForm="ngForm">
+  <link rel="stylesheet" href="register.component.css">
+
+  <!-- Affichage du menu -->
+
+
+
+  <!-- Vos éléments de formulaire -->
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" ngModel required>
+
+  <label for="subject">Sujet:</label>
+  <input type="text" id="subject" name="subject" ngModel required>
+
+  <label for="body">Corps:</label>
+  <textarea id="body" name="body" ngModel required></textarea>
+
+  <button (click)="postMethod(invitationForm.value)">Envoyer</button>
+
+  <!-- Message de succès -->
+  <div *ngIf="postSuccess" class="success-message">
+    Invitation envoyée avec succès!
+  </div>
+</form>
+
+<!-- Définition du menuContent -->
+<ng-template #menuContent>
+  <!-- Votre menu HTML -->
+  <!-- Copiez et collez le contenu de votre menu HTML ici -->
+</ng-template>

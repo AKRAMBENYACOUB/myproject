@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+	list-style: none;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body{
+	background: #f5f6fa;
+}
+
+.wrapper .sidebar{
+	background: #ff7402;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 225px;
+	height: 100%;
+	padding: 20px 0;
+	transition: all 0.5s ease;
+}
+
+.wrapper .sidebar .profile{
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.wrapper .sidebar .profile img{
+	display: block;
+	width: 100px;
+	height: 100px;
+    border-radius: 50%;
+	margin: 0 auto;
+}
+
+.wrapper .sidebar .profile h3{
+	color: #ffffff;
+	margin: 10px 0 5px;
+}
+
+.wrapper .sidebar .profile p{
+	color: rgb(241, 237, 237);
+	font-size: 14px;
+}
+
+.wrapper .sidebar ul li a{
+	display: block;
+	padding: 13px 30px;
+	border-bottom: 1px solid rgb(241, 237, 237);
+	color: rgb(241, 237, 237);
+	font-size: 16px;
+	position: relative;
+}
+
+.wrapper .sidebar ul li a .icon{
+	color: #dee4ec;
+	width: 30px;
+	display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+	color: #ff7402;
+	background:white;
+    border-right: 2px solid #ff7402;
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon{
+	color: #ff7402;
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before{
+	display: block;
+}
+
+.wrapper .section{
+	width: calc(100% - 225px);
+	margin-left: 225px;
+	transition: all 0.5s ease;
+	padding: 20px;
+}
+
+.wrapper .section .top_navbar{
+	background: #ff7402;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	padding: 0 30px;
+}
+
+.wrapper .section .top_navbar .hamburger a{
+	font-size: 28px;
+	color: #f4fbff;
+}
+
+.wrapper .section .top_navbar .hamburger a:hover{
+	color: #ff7402;
+}
+
+body.active .wrapper .sidebar{
+	left: -225px;
+}
+
+body.active .wrapper .section{
+	margin-left: 0;
+	width: 100%;
+}
+
+.user-list-container {
+    margin-top: 20px;
+}
+
+.user-list-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-list-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-list-container button {
+    margin-left: 10px;
+}
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="profile">
+                <img src="assets/image.png" alt="profile_picture">
+                <h3>ARTINOVE</h3>
+                <p>Comptable</p>
+            </div>
+            <ul>
+                <li>
+                    <a href="#" class="active">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="register">
+                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="item">Invité</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="invitation">
+                        <span class="icon"><i class="fas fa-user-friends"></i></span>
+                        <span class="item">Liste Des Invités</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <span class="item">Perfomance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-database"></i></span>
+                        <span class="item">Development</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="item">Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="item">Admin</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="item">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="section">
+            <h2>Liste des utilisateurs invités :</h2>
+            <link rel="stylesheet" type="text/css" href="invitation.component.css">
+
+            <!-- Ajoutez le contenu pour l'indicateur de chargement et la liste des e-mails -->
+            <div *ngIf="isLoading; else content">
+                <!-- Indicateur de chargement -->
+                <p>Loading...</p>
+            </div>
+            <ng-template #content>
+                <!-- Contenu à afficher lorsque le chargement est terminé -->
+                <div class="user-list-container">
+                    <ul>
+                        <ng-container *ngIf="users && users.length > 0; else noUsers">
+                            <li *ngFor="let user of users">
+    <div>
+
+      <div>{{user.email}}</div>
+      <div>{{user.dateEnvoi}}</div>
+    </div>
+
+
+                                <a href="register">invité</a>
+                            </li>
+                        </ng-container>
+                        <ng-template #noUsers>
+                            <li>Aucun utilisateur invité.</li>
+                        </ng-template>
+                    </ul>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+    <script>
+        var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function(){
+            document.querySelector("body").classList.toggle("active");
+        })
+    </script>
+</body>
+</html>

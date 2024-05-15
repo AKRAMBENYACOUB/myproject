@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -62,7 +63,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mon-projet-angular:build:production"
+              "buildTarget": "mon-projet-angular:build:production",
+              "proxyConfig": "src/proxy.config.json"
             },
             "development": {
               "buildTarget": "mon-projet-angular:build:development"
@@ -89,6 +91,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -96,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "95c6c55f-bfbf-4123-80e6-f0950be38a98"
   }
 }
